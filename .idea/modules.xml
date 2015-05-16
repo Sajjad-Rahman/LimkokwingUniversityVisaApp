@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/LimkokwingUniversityVisaApp.iml" filepath="$PROJECT_DIR$/LimkokwingUniversityVisaApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LimkokwingStudnetApp.iml" filepath="$PROJECT_DIR$/LimkokwingStudnetApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
