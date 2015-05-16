@@ -1,6 +1,9 @@
 package com.example.limkokwing.limkokwingstudentapp;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -12,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity
@@ -26,11 +30,14 @@ public class MainActivity extends ActionBarActivity
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
+    static Activity thisActivity = null;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        thisActivity = this;
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
@@ -132,6 +139,26 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView (LayoutInflater inflater, ViewGroup container,
                                   Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            int drawerItemNo = (getArguments().getInt(ARG_SECTION_NUMBER));
+            switch (drawerItemNo){
+                case 1:
+                    //thisActivity.setContentView(R.layout.activity_main);
+                    //Toast.makeText(thisActivity, "Coming Soon", Toast.LENGTH_SHORT).show();
+                    break;
+                case 2:
+                    startActivity(new Intent(thisActivity, SecondActivity.class));
+                    //thisActivity.setContentView(R.layout.fragment_two);
+                    /*FragmentManager fragmentManager = getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    PlaceholderFragment fragment = new PlaceholderFragment();
+                    fragmentTransaction.add(R.id.container, fragment);
+                    fragmentTransaction.commit();*/
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
             return rootView;
         }
 
