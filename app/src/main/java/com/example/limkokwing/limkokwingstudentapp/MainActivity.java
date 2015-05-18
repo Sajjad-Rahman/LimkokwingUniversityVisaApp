@@ -12,6 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.widget.DrawerLayout;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity
@@ -27,41 +32,66 @@ public class MainActivity extends ActionBarActivity
      */
     private CharSequence mTitle;
 
+    private static WebView webView;
+    private String studentID;
+    private String studentPassword;
+    private boolean loginSuccess;
+
+    Fragment fragment2 = null;
+    FragmentManager fragmentManager;
+
     @Override
     protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        mNavigationDrawerFragment = (NavigationDrawerFragment)
-                getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
-
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
+
+        webView = (WebView) findViewById(R.id.webView1);
+        webView.setWebViewClient(new WebViewClient());
+        // Set Pinch to Zoom controls
+        webView.getSettings().setBuiltInZoomControls(true);
+        // Hide the Zoom controls in the display
+        webView.getSettings().setDisplayZoomControls(false);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
     }
 
     @Override
     public void onNavigationDrawerItemSelected (int position) {
-        Fragment fragment2 = null;
         switch (position){
             case 0:
-                fragment2 = new FragmentSecActivity();
+                if (loginSuccess){
+                    fragment2 = new FragmentSevenActivity();
+                }
+                else {
+                    fragment2 = new FragmentFirstActivity();
+                }
                 break;
             case 1:
-                fragment2 = new FragmentThirdActivity();
+                fragment2 = new FragmentSecondActivity();
                 break;
             case 2:
-                fragment2 = new FragmentSecActivity();
+                fragment2 = new FragmentThirdActivity();
                 break;
             case 3:
-                fragment2 = new FragmentSecActivity();
+                webView.loadUrl("www.google.com");
+                fragment2 = new FragmentFourActivity();
+                break;
+            case 4:
+                fragment2 = new FragmentFifthActivity();
+                break;
+            case 5:
+                fragment2 = new FragmentSixthActivity();
                 break;
         }
         // update the main content by replacing fragments
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position + 1), "").commit();
     }
@@ -79,6 +109,13 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 4:
                 mTitle = getString(R.string.title_section4);
+                break;
+            case 5:
+                mTitle = getString(R.string.title_section5);
+                break;
+            case 6:
+                mTitle = getString(R.string.title_section6);
+                break;
         }
     }
 
@@ -88,7 +125,6 @@ public class MainActivity extends ActionBarActivity
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu (Menu menu) {
@@ -158,4 +194,29 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
+    public void buttonLogin (View view){
+        EditText editText1 = (EditText) findViewById(R.id.editText1);
+        studentID = editText1.getText().toString();
+        EditText editText2 = (EditText) findViewById(R.id.editText2);
+        studentPassword = editText2.getText().toString();
+
+        if (studentID.equals("1111") && studentPassword.equals("2222")){
+            loginSuccess = true;
+            Toast.makeText(MainActivity.this, "Log In Successfully", Toast.LENGTH_SHORT).show();
+            fragment2 = new FragmentSevenActivity();
+            fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+            //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position + 1), "").commit();
+        }
+        else {
+            Toast.makeText(MainActivity.this, "Wrong Input, Try Again", Toast.LENGTH_SHORT).show();
+            editText1.setText("");
+            editText2.setText("");
+        }
+    }
+    public void buttonLogout (View view){
+        loginSuccess = false;
+        fragment2 = new FragmentFirstActivity();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+        Toast.makeText(MainActivity.this, "Log Out Successfully", Toast.LENGTH_SHORT).show();
+    }
 }

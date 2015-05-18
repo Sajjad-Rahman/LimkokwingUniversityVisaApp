@@ -6,6 +6,8 @@
     <string name="title_section2">Visa Status</string>
     <string name="title_section3">Fees Check</string>
     <string name="title_section4">Educational News</string>
+    <string name="title_section5">Contact University</string>
+    <string name="title_section6">About</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
