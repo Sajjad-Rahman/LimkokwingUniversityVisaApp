@@ -8,14 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class FragmentFirstActivity extends Fragment{
+public class FragmentApplyLoan extends Fragment{
     View rootView;
     @Nullable
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        rootView = inflater.inflate(R.layout.fragment_apply_loan, container, false);
         return rootView;
     }
-
-
 }

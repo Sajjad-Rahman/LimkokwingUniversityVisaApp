@@ -1,6 +1,8 @@
 package com.example.limkokwing.limkokwingstudentapp;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -30,15 +32,14 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
     private CharSequence mTitle;
-
     private static WebView webView;
     private String studentID;
     private String studentPassword;
     private boolean loginSuccess;
-
     Fragment fragment2 = null;
     FragmentManager fragmentManager;
     int position2;
+    private static long back_pressed;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 
+        // TODO remove the webView from main activity layout
         webView = (WebView) findViewById(R.id.webView1);
         webView.setWebViewClient(new WebViewClient());
         // Set Pinch to Zoom controls
@@ -64,6 +66,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     public void onNavigationDrawerItemSelected (int position) {
         switch (position) {
             case 0:
+                // TODO crashing for webView here. find the reason
+                //webView.loadUrl("about:blank");
                 if (loginSuccess) {
                     fragment2 = new FragmentSevenActivity();
                 } else {
@@ -71,6 +75,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 }
                 break;
             case 1:
+                webView.loadUrl("about:blank");
                 if (loginSuccess){
                     fragment2 = new FragmentSecondActivity();
                 } else {
@@ -79,6 +84,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 }
                 break;
             case 2:
+                webView.loadUrl("about:blank");
                 if (loginSuccess){
                     fragment2 = new FragmentThirdActivity();
                 } else {
@@ -87,11 +93,14 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 }
                 break;
             case 3:
-                webView.loadUrl("www.google.com");
                 fragment2 = new FragmentFourActivity();
+                webView.clearCache(true);
+                webView.loadUrl("http://www.limkokwing.net/malaysia/news/");
                 break;
             case 4:
                 fragment2 = new FragmentFifthActivity();
+                webView.clearCache(true);
+                webView.loadUrl("about:blank");
                 break;
             case 5:
                 fragment2 = new FragmentSixthActivity();
@@ -218,6 +227,18 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             editText2.setText("");
         }
     }
+    public void buttonForgetUser (View view){
+        fragment2 = new FragmentForgetUser();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+    }
+    public void buttonGoBackLogin (View view){
+        fragment2 = new FragmentFirstActivity();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+    }
+    public void buttonGoBackVisa (View view){
+        fragment2 = new FragmentSevenActivity();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+    }
 
     public void buttonLogout (View view) {
         loginSuccess = false;
@@ -247,5 +268,38 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
     }
+    public void buttonContactCall (View view){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:+60383178888"));
+        Toast.makeText(MainActivity.this, "Calling Bursary: +(603) 8317 8888", Toast.LENGTH_SHORT).show();
+        startActivity(callIntent);
+    }
+    public void buttonTicketCall (View view){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:+60378433000"));
+        Toast.makeText(MainActivity.this, "Calling Malaysian Airline: +(603) 8317 8888", Toast.LENGTH_SHORT).show();
+        startActivity(callIntent);
+    }
+    public void buttonUniversityCall (View view){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:+60383178888"));
+        Toast.makeText(MainActivity.this, "Calling University: +(603) 8317 8888", Toast.LENGTH_SHORT).show();
+        startActivity(callIntent);
+    }
+    public void buttonApplyLoan (View view){
+        fragment2 = new FragmentApplyLoan();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+        webView.clearCache(true);
+        webView.loadUrl("http://www.hsbc.bm/1/2/educationloans");
+    }
 
+    @Override
+    public void onBackPressed() {
+        if (back_pressed + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(getBaseContext(), "Press once again to exit!", Toast.LENGTH_SHORT).show();
+            back_pressed = System.currentTimeMillis();
+        }
+    }
 }
