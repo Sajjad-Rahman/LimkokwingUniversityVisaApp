@@ -18,6 +18,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -38,6 +39,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     private boolean loginSuccess;
     Fragment fragment2 = null;
     FragmentManager fragmentManager;
+    String[] userName = {"Jaimie", "Leona", "Jonathon", "Melvin", "Diana", "Dorris", "Bran", "Gabriel", "Sufia", "Sherill"};
     int position2;
     private static long back_pressed;
 
@@ -60,6 +62,9 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         webView.getSettings().setDisplayZoomControls(false);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+
+        //TextView textView = (TextView) findViewById(R.id.textView77);
+        //textView.setText("Welcome Back" + userName[1]);
     }
 
     @Override
@@ -76,7 +81,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 break;
             case 1:
                 webView.loadUrl("about:blank");
-                if (loginSuccess){
+                if (loginSuccess) {
                     fragment2 = new FragmentSecondActivity();
                 } else {
                     Toast.makeText(MainActivity.this, "Please Log In First", Toast.LENGTH_SHORT).show();
@@ -85,7 +90,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 break;
             case 2:
                 webView.loadUrl("about:blank");
-                if (loginSuccess){
+                if (loginSuccess) {
                     fragment2 = new FragmentThirdActivity();
                 } else {
                     Toast.makeText(MainActivity.this, "Please Log In First", Toast.LENGTH_SHORT).show();
@@ -100,10 +105,12 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             case 4:
                 fragment2 = new FragmentFifthActivity();
                 webView.clearCache(true);
-                webView.loadUrl("about:blank");
+                webView.loadUrl("http://www.limkokwing.net/malaysia/enquiry");
                 break;
             case 5:
                 fragment2 = new FragmentSixthActivity();
+                webView.clearCache(true);
+                webView.loadUrl("file:///android_asset/page.html");
                 break;
         }
         position2 = position;
@@ -215,7 +222,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         EditText editText2 = (EditText) findViewById(R.id.editText2);
         studentPassword = editText2.getText().toString();
 
-        if (studentID.equals("1111") && studentPassword.equals("2222")) {
+        if (studentID.equals("1100")) {
             loginSuccess = true;
             Toast.makeText(MainActivity.this, "Log In Successfully", Toast.LENGTH_SHORT).show();
             fragment2 = new FragmentSevenActivity();
@@ -227,15 +234,18 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
             editText2.setText("");
         }
     }
-    public void buttonForgetUser (View view){
+
+    public void buttonForgetUser (View view) {
         fragment2 = new FragmentForgetUser();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
     }
-    public void buttonGoBackLogin (View view){
+
+    public void buttonGoBackLogin (View view) {
         fragment2 = new FragmentFirstActivity();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
     }
-    public void buttonGoBackVisa (View view){
+
+    public void buttonGoBackVisa (View view) {
         fragment2 = new FragmentSevenActivity();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
     }
@@ -252,49 +262,58 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
     }
-    public void buttonFees (View view){
+
+    public void buttonFees (View view) {
         fragment2 = new FragmentThirdActivity();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
     }
-    public void buttonVisaStatus (View view){
+
+    public void buttonVisaStatus (View view) {
         fragment2 = new FragmentEightActivity();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
     }
+
     // TODO update the action bar title. in two place, one when locked 2 transition. another when clicks button inside login screen
-    public void buttonCancelVisa (View view){
+    public void buttonCancelVisa (View view) {
         fragment2 = new FragmentNineActivity();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
     }
-    public void buttonContactCall (View view){
+
+    public void buttonContactCall (View view) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:+60383178888"));
         Toast.makeText(MainActivity.this, "Calling Bursary: +(603) 8317 8888", Toast.LENGTH_SHORT).show();
         startActivity(callIntent);
     }
-    public void buttonTicketCall (View view){
+
+    public void buttonTicketCall (View view) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:+60378433000"));
         Toast.makeText(MainActivity.this, "Calling Malaysian Airline: +(603) 8317 8888", Toast.LENGTH_SHORT).show();
         startActivity(callIntent);
     }
-    public void buttonUniversityCall (View view){
+
+    public void buttonUniversityCall (View view) {
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:+60383178888"));
         Toast.makeText(MainActivity.this, "Calling University: +(603) 8317 8888", Toast.LENGTH_SHORT).show();
         startActivity(callIntent);
     }
-    public void buttonApplyLoan (View view){
+
+    public void buttonApplyLoan (View view) {
         fragment2 = new FragmentApplyLoan();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         webView.clearCache(true);
         webView.loadUrl("http://www.hsbc.bm/1/2/educationloans");
     }
 
+    // TODO back goes one step back first, with fragment memory
+    // TODO apply splash screen, Background, apply font style and color
     @Override
-    public void onBackPressed() {
+    public void onBackPressed () {
         if (back_pressed + 2000 > System.currentTimeMillis()) {
             super.onBackPressed();
         } else {

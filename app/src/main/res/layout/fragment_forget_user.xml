@@ -17,34 +17,34 @@
         android:id = "@+id/textView6"
         android:layout_alignParentTop = "true"
         android:layout_centerHorizontal = "true"
-        android:layout_margin = "16dp"/>
+        android:layout_margin = "16dp"
+        />
 
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:textAppearance = "?android:attr/textAppearanceLarge"
         android:text = "Try These Below:"
-        android:id = "@+id/textView7"
+        android:id = "@+id/textView77"
         android:layout_below = "@+id/textView6"
         android:layout_centerHorizontal = "true"
-        android:layout_margin = "16dp"/>
+        android:layout_margin = "16dp"
+        />
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:textAppearance = "?android:attr/textAppearanceMedium"
-        android:text = "User ID: 1111"
+        android:text = "User ID: 1100"
         android:id = "@+id/textView8_username"
-        android:layout_below = "@+id/textView7"
+        android:layout_below = "@+id/textView77"
         android:layout_centerHorizontal = "true"
-        android:layout_marginTop = "39dp"
         android:layout_margin = "16dp"/>
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:textAppearance = "?android:attr/textAppearanceMedium"
-        android:text = "Password: 2222"
+        android:text = "Password: Any Number"
         android:id = "@+id/textView8_userid"
-        android:layout_marginTop = "36dp"
         android:layout_below = "@+id/textView8_username"
         android:layout_centerHorizontal = "true"
         android:layout_margin = "16dp"/>
@@ -55,6 +55,7 @@
         android:id = "@+id/button_go_back_login"
         android:layout_below = "@+id/textView8_userid"
         android:layout_centerHorizontal = "true"
-        android:onClick="buttonGoBackLogin"/>
+        android:onClick="buttonGoBackLogin"
+        android:layout_margin = "16dp"/>
 
 </RelativeLayout>

@@ -1,0 +1,186 @@
+/* This code is only meant for previewing your Reflow design. */
+.primaryContainer {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+    background-color: rgb(44, 44, 44);
+}
+
+#text {
+    float: none;
+    font-size: 1.5em;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 11.1875px;
+    clear: none;
+    min-height: 58px;
+    font-family: advent-pro;
+    background-color: rgba(87, 87, 87, 0);
+    color: rgb(221, 221, 221);
+    margin-right: auto;
+}
+
+#text1 {
+    float: none;
+    font-size: 1.5em;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 16.8125px;
+    clear: none;
+    min-height: 53px;
+    font-family: advent-pro;
+    background-color: rgba(87, 87, 87, 0);
+    color: rgb(221, 221, 221);
+    margin-right: auto;
+}
+
+#text2 {
+    float: none;
+    font-size: 1.5em;
+    width: 97.096354%;
+    height: auto;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 48.59375px;
+    clear: none;
+    min-height: 80px;
+    font-family: advent-pro;
+    background-color: rgba(87, 87, 87, 0);
+    color: rgb(221, 221, 221);
+    margin-right: auto;
+}
+
+#text3 {
+    float: none;
+    font-size: 1.5em;
+    width: 99.99566%;
+    height: auto;
+    text-align: center;
+    font-weight: 600;
+    line-height: 1em;
+    margin-left: auto;
+    margin-top: 26px;
+    clear: none;
+    min-height: 264px;
+    font-family: advent-pro;
+    background-color: rgba(87, 87, 87, 0);
+    color: rgb(221, 221, 221);
+    margin-right: auto;
+}
+
+#image {
+    float: none;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-top: 1.8125px;
+    clear: none;
+    color: rgb(0, 0, 0);
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 360px) {
+    .primaryContainer {
+        margin: 12px auto;
+        background-color: rgb(46, 46, 46);
+    }
+
+    #text {
+        float: left;
+        font-size: 1.5em;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        font-weight: 600;
+        line-height: 1em;
+        margin-left: 0%;
+        margin-top: 9px;
+        clear: none;
+        min-height: 31px;
+        font-family: advent-pro;
+        background-color: rgba(87, 87, 87, 0);
+        color: rgb(221, 221, 221);
+        margin-right: 0%;
+    }
+
+    #text1 {
+        float: left;
+        font-size: 1.5em;
+        width: 100%;
+        height: auto;
+        text-align: center;
+        font-weight: 600;
+        line-height: 1em;
+        margin: 24px auto 0px 0%;
+        clear: both;
+        min-height: 35px;
+        font-family: advent-pro;
+        background-color: rgba(87, 87, 87, 0);
+        color: rgb(221, 221, 221);
+    }
+
+    #text2 {
+        float: left;
+        font-size: 1.5em;
+        width: 99.99566%;
+        height: auto;
+        text-align: center;
+        font-weight: 600;
+        line-height: 1em;
+        margin-left: 0%;
+        margin-top: 7.75px;
+        clear: both;
+        min-height: 80px;
+        font-family: advent-pro;
+        background-color: rgba(87, 87, 87, 0);
+        color: rgb(221, 221, 221);
+        margin-right: auto;
+    }
+
+    #text3 {
+        float: left;
+        font-size: 1.5em;
+        width: 99.99566%;
+        height: auto;
+        text-align: center;
+        font-weight: 600;
+        line-height: 1em;
+        margin-left: 0%;
+        margin-top: 34px;
+        clear: both;
+        min-height: 264px;
+        font-family: advent-pro;
+        background-color: rgba(87, 87, 87, 0);
+        color: rgb(221, 221, 221);
+    }
+
+    #image {
+        float: left;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+        clear: both;
+        color: rgb(0, 0, 0);
+        margin-top: 18px;
+        margin-right: auto;
+        margin-bottom: 0px;
+    }
+
+    body {
+        background-color: rgb(46, 46, 46);
+    }
+}
+
