@@ -19,8 +19,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+public class MainActivity extends ActionBarActivity implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -39,6 +38,7 @@ public class MainActivity extends ActionBarActivity
 
     Fragment fragment2 = null;
     FragmentManager fragmentManager;
+    int position2;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -48,9 +48,7 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mTitle = getTitle();
         // Set up the drawer.
-        mNavigationDrawerFragment.setUp(
-                R.id.navigation_drawer,
-                (DrawerLayout) findViewById(R.id.drawer_layout));
+        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
 
         webView = (WebView) findViewById(R.id.webView1);
         webView.setWebViewClient(new WebViewClient());
@@ -64,20 +62,29 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onNavigationDrawerItemSelected (int position) {
-        switch (position){
+        switch (position) {
             case 0:
-                if (loginSuccess){
+                if (loginSuccess) {
                     fragment2 = new FragmentSevenActivity();
-                }
-                else {
+                } else {
                     fragment2 = new FragmentFirstActivity();
                 }
                 break;
             case 1:
-                fragment2 = new FragmentSecondActivity();
+                if (loginSuccess){
+                    fragment2 = new FragmentSecondActivity();
+                } else {
+                    Toast.makeText(MainActivity.this, "Please Log In First", Toast.LENGTH_SHORT).show();
+                    fragment2 = new FragmentFirstActivity();
+                }
                 break;
             case 2:
-                fragment2 = new FragmentThirdActivity();
+                if (loginSuccess){
+                    fragment2 = new FragmentThirdActivity();
+                } else {
+                    Toast.makeText(MainActivity.this, "Please Log In First", Toast.LENGTH_SHORT).show();
+                    fragment2 = new FragmentFirstActivity();
+                }
                 break;
             case 3:
                 webView.loadUrl("www.google.com");
@@ -90,6 +97,7 @@ public class MainActivity extends ActionBarActivity
                 fragment2 = new FragmentSixthActivity();
                 break;
         }
+        position2 = position;
         // update the main content by replacing fragments
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
@@ -180,8 +188,7 @@ public class MainActivity extends ActionBarActivity
         }
 
         @Override
-        public View onCreateView (LayoutInflater inflater, ViewGroup container,
-                                  Bundle savedInstanceState) {
+        public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
@@ -189,34 +196,56 @@ public class MainActivity extends ActionBarActivity
         @Override
         public void onAttach (Activity activity) {
             super.onAttach(activity);
-            ((MainActivity) activity).onSectionAttached(
-                    getArguments().getInt(ARG_SECTION_NUMBER));
+            ((MainActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
         }
     }
 
-    public void buttonLogin (View view){
+    public void buttonLogin (View view) {
         EditText editText1 = (EditText) findViewById(R.id.editText1);
         studentID = editText1.getText().toString();
         EditText editText2 = (EditText) findViewById(R.id.editText2);
         studentPassword = editText2.getText().toString();
 
-        if (studentID.equals("1111") && studentPassword.equals("2222")){
+        if (studentID.equals("1111") && studentPassword.equals("2222")) {
             loginSuccess = true;
             Toast.makeText(MainActivity.this, "Log In Successfully", Toast.LENGTH_SHORT).show();
             fragment2 = new FragmentSevenActivity();
             fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
             //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position + 1), "").commit();
-        }
-        else {
+        } else {
             Toast.makeText(MainActivity.this, "Wrong Input, Try Again", Toast.LENGTH_SHORT).show();
             editText1.setText("");
             editText2.setText("");
         }
     }
-    public void buttonLogout (View view){
+
+    public void buttonLogout (View view) {
         loginSuccess = false;
         fragment2 = new FragmentFirstActivity();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
         Toast.makeText(MainActivity.this, "Log Out Successfully", Toast.LENGTH_SHORT).show();
     }
+
+    public void buttonVisa (View view) {
+        fragment2 = new FragmentSecondActivity();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+        //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
+    }
+    public void buttonFees (View view){
+        fragment2 = new FragmentThirdActivity();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+        //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
+    }
+    public void buttonVisaStatus (View view){
+        fragment2 = new FragmentEightActivity();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+        //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
+    }
+    // TODO update the action bar title. in two place, one when locked 2 transition. another when clicks button inside login screen
+    public void buttonCancelVisa (View view){
+        fragment2 = new FragmentNineActivity();
+        fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
+        //fragmentManager.beginTransaction().add(PlaceholderFragment.newInstance(position2 + 1), "").commit();
+    }
+
 }

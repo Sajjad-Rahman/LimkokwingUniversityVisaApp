@@ -15,8 +15,7 @@
         android:inputType = "number"
         android:ems = "10"
         android:id = "@+id/editText1"
-        android:layout_marginBottom = "34dp"
-        android:layout_above = "@+id/textView4"
+        android:layout_alignTop = "@+id/textView3"
         android:layout_alignParentRight = "true"
         android:layout_alignParentEnd = "true"
         />
@@ -27,8 +26,7 @@
         android:inputType = "numberPassword"
         android:ems = "10"
         android:id = "@+id/editText2"
-        android:layout_marginBottom = "75dp"
-        android:layout_above = "@+id/buttonOne"
+        android:layout_alignTop = "@+id/textView4"
         android:layout_alignParentRight = "true"
         android:layout_alignParentEnd = "true"
         />
@@ -39,10 +37,10 @@
         android:textAppearance = "?android:attr/textAppearanceLarge"
         android:text = "Student ID:"
         android:id = "@+id/textView3"
-        android:layout_alignBottom = "@+id/editText1"
+        android:layout_below = "@+id/textView5"
         android:layout_alignParentLeft = "true"
         android:layout_alignParentStart = "true"
-        />
+        android:layout_marginTop = "16dp"/>
 
     <TextView
         android:layout_width = "wrap_content"
@@ -50,21 +48,20 @@
         android:textAppearance = "?android:attr/textAppearanceLarge"
         android:text = "Password:"
         android:id = "@+id/textView4"
-        android:layout_alignBottom = "@+id/editText2"
+        android:layout_below = "@+id/editText1"
         android:layout_alignParentLeft = "true"
         android:layout_alignParentStart = "true"
-        />
+        android:layout_marginTop = "22dp"/>
 
     <Button
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Log In"
         android:id = "@+id/buttonOne"
-        android:layout_alignTop = "@+id/buttonTwo"
-        android:layout_alignLeft = "@+id/textView5"
-        android:layout_alignStart = "@+id/textView5"
         android:onClick="buttonLogin"
-        />
+        android:layout_below = "@+id/editText2"
+        android:layout_alignParentLeft = "true"
+        android:layout_alignParentStart = "true"/>
 
     <TextView
         android:layout_width = "wrap_content"
@@ -73,17 +70,15 @@
         android:text = "Welcome. Please Sign In"
         android:id = "@+id/textView5"
         android:layout_alignParentTop = "true"
-        android:layout_centerHorizontal = "true"
-        />
+        android:layout_centerHorizontal = "true"/>
 
     <Button
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Forget ?"
         android:id = "@+id/buttonTwo"
-        android:layout_centerVertical = "true"
-        android:layout_alignRight = "@+id/textView5"
-        android:layout_alignEnd = "@+id/textView5"
-        />
+        android:layout_below = "@+id/editText2"
+        android:layout_alignParentRight = "true"
+        android:layout_alignParentEnd = "true"/>
 
 </RelativeLayout>

@@ -13,9 +13,60 @@
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:textAppearance = "?android:attr/textAppearanceLarge"
-        android:text = "Fragment 3"
+        android:text = "Fee Statement"
         android:id = "@+id/textView2"
         android:layout_alignParentTop = "true"
+        android:layout_centerHorizontal = "true"/>
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:textAppearance = "?android:attr/textAppearanceLarge"
+        android:text = "Fees for This Semester:"
+        android:id = "@+id/textView11"
+        android:layout_marginTop = "19dp"
+        android:layout_below = "@+id/textView14"
+        android:layout_centerHorizontal = "true"/>
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:textAppearance = "?android:attr/textAppearanceLarge"
+        android:text = "Outstanding:"
+        android:id = "@+id/textView12"
+        android:layout_marginTop = "28dp"
+        android:layout_below = "@+id/textView13"
+        android:layout_centerHorizontal = "true"/>
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:textAppearance = "?android:attr/textAppearanceLarge"
+        android:text = "Total Paid:"
+        android:id = "@+id/textView13"
+        android:layout_below = "@+id/textView11"
         android:layout_centerHorizontal = "true"
-        />
+        android:layout_marginTop = "18dp"/>
+    <Button
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "Contact Bursary"
+        android:id = "@+id/button3"
+        android:layout_below = "@+id/textView12"
+        android:layout_alignParentLeft = "true"
+        android:layout_alignParentStart = "true"
+        android:layout_marginTop = "85dp"/>
+    <Button
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "Apply for Loan"
+        android:id = "@+id/button4"
+        android:layout_alignTop = "@+id/button3"
+        android:layout_alignParentRight = "true"
+        android:layout_alignParentEnd = "true"/>
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:textAppearance = "?android:attr/textAppearanceLarge"
+        android:text = "Student Status:"
+        android:id = "@+id/textView14"
+        android:layout_below = "@+id/textView2"
+        android:layout_centerHorizontal = "true"/>
 </RelativeLayout>
