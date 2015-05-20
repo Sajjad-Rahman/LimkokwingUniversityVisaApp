@@ -7,12 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin">
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background = "@color/background_material_dark">
 
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:textAppearance = "?android:attr/textAppearanceLarge"
+        android:textAppearance = "@android:style/TextAppearance.Material.Large.Inverse"
         android:text = "Are you Sure want to Cancel Visa Processing?"
         android:id = "@+id/textView6"
         android:layout_alignParentTop = "true"
@@ -34,7 +35,7 @@
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:textAppearance = "?android:attr/textAppearanceLarge"
+        android:textAppearance = "@android:style/TextAppearance.Material.Large.Inverse"
         android:text = "Staying without Visa is illegal !"
         android:id = "@+id/textView77"
         android:layout_below = "@+id/textView6"
@@ -44,7 +45,7 @@
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:textAppearance = "?android:attr/textAppearanceMedium"
+        android:textAppearance = "@android:style/TextAppearance.Material.Large.Inverse"
         android:text = "Call +60 3-7843 3000 for Malaysian Airline Ticket Booking"
         android:id = "@+id/textView8_username"
         android:layout_below = "@+id/textView77"
@@ -54,7 +55,7 @@
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
-        android:textAppearance = "?android:attr/textAppearanceMedium"
+        android:textAppearance = "@android:style/TextAppearance.Material.Large.Inverse"
         android:text = "Contact Us: 03-8317 8888"
         android:id = "@+id/textView8_userid"
         android:layout_below = "@+id/textView8_username"

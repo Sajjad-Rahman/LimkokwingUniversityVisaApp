@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Limkokwing Student App</string>
-    <string name="activity_second">Second Activity</string>
 
     <string name="title_section1">Home</string>
     <string name="title_section2">Visa Status</string>
@@ -15,4 +14,5 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+
 </resources>

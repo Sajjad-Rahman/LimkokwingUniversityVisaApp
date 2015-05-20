@@ -3,9 +3,9 @@ package com.example.limkokwing.limkokwingstudentapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -40,7 +40,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     Fragment fragment2 = null;
     FragmentManager fragmentManager;
     String[] userName = {"Jaimie", "Leona", "Jonathon", "Melvin", "Diana", "Dorris", "Bran", "Gabriel", "Sufia", "Sherill"};
-    int position2;
     private static long back_pressed;
 
     @Override
@@ -74,6 +73,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 // TODO crashing for webView here. find the reason
                 //webView.loadUrl("about:blank");
                 if (loginSuccess) {
+                    webView.loadUrl("about:blank");
                     fragment2 = new FragmentSevenActivity();
                 } else {
                     fragment2 = new FragmentFirstActivity();
@@ -113,7 +113,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
                 webView.loadUrl("file:///android_asset/page.html");
                 break;
         }
-        position2 = position;
         // update the main content by replacing fragments
         fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
@@ -217,6 +216,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     }
 
     public void buttonLogin (View view) {
+        webView.loadUrl("about:blank");
         EditText editText1 = (EditText) findViewById(R.id.editText1);
         studentID = editText1.getText().toString();
         EditText editText2 = (EditText) findViewById(R.id.editText2);
@@ -236,6 +236,7 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     }
 
     public void buttonForgetUser (View view) {
+        webView.loadUrl("about:blank");
         fragment2 = new FragmentForgetUser();
         fragmentManager.beginTransaction().replace(R.id.container, fragment2).commit();
     }
@@ -311,7 +312,8 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     }
 
     // TODO back goes one step back first, with fragment memory
-    // TODO apply splash screen, Background, apply font style and color
+    // TODO apply splash screen
+    // TODO insert these information
     @Override
     public void onBackPressed () {
         if (back_pressed + 2000 > System.currentTimeMillis()) {
