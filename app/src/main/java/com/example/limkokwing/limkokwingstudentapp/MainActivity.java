@@ -312,7 +312,6 @@ public class MainActivity extends ActionBarActivity implements NavigationDrawerF
     }
 
     // TODO back goes one step back first, with fragment memory
-    // TODO apply splash screen
     // TODO insert these information
     @Override
     public void onBackPressed () {
